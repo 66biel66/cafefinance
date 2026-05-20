@@ -90,8 +90,15 @@ services:
 
     restart: always
 
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: app_db
+      DB_USER: app_user
+      DB_PASSWORD: app_pass
+
     volumes:
-      - ./php-api/cafefinance-php/public:/var/www/html
+      - ./php-api/cafefinance-php:/var/www/html
 
     expose:
       - "80"
@@ -117,6 +124,13 @@ services:
     container_name: python_api
 
     restart: always
+
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: app_db
+      DB_USER: app_user
+      DB_PASSWORD: app_pass
 
     volumes:
       - ./python-api/cafefinance-python:/app
